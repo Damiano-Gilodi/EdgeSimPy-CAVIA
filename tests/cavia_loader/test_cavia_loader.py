@@ -1,40 +1,20 @@
 from adapters.cavia.cavia_scenario_loader import CaviaScenarioLoader
 from adapters.cavia.find_valid_scenarios import find_or_load_scenarios
-from edge_sim_py.components.application import Application
 from edge_sim_py.components.base_station import BaseStation
 from edge_sim_py.components.edge_server import EdgeServer
-from edge_sim_py.components.network_flow import NetworkFlow
 from edge_sim_py.components.network_link import NetworkLink
 from edge_sim_py.components.network_switch import NetworkSwitch
 from edge_sim_py.components.service import Service
-from edge_sim_py.components.topology import Topology
-from edge_sim_py.components.user import User
+from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 import pytest  # type: ignore
 import os
 import networkx as nx  # type: ignore
 
 
-def reset_components():
-
-    for cls in (
-        Topology,
-        NetworkLink,
-        BaseStation,
-        NetworkSwitch,
-        EdgeServer,
-        Service,
-        User,
-        Application,
-        NetworkFlow,
-    ):
-        cls._instances = []
-        cls._object_count = 0
-
-
 @pytest.fixture
 def cavia_scenario():
 
-    reset_components()
+    EdgeSimPyResetter.clear_all()
 
     HOME_DIR = os.path.expanduser("~")
     BASE_PATH = os.path.join(HOME_DIR, "Desktop")

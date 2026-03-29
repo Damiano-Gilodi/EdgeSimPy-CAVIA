@@ -10,6 +10,7 @@ from edge_sim_py.components.network_switch import NetworkSwitch
 from edge_sim_py.components.service import Service
 from edge_sim_py.components.topology import Topology
 from edge_sim_py.dataset_generator.map.hexagonal_grid import hexagonal_grid
+from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 
 
 class CaviaScenarioLoader:
@@ -22,6 +23,9 @@ class CaviaScenarioLoader:
             self.data_pkl = pickle.load(f)
 
     def build_scenario(self):
+
+        EdgeSimPyResetter.clear_all()
+
         # Load topology, basestations, switch, server
         topology, node_server_map = self._load_topology()
 
