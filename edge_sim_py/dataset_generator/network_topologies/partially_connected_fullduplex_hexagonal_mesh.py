@@ -13,7 +13,7 @@ from edge_sim_py.components.network_link import NetworkLink
 import random
 
 
-def partially_connected_fullduplex_hexagonal_mesh(network_nodes: list, link_specifications: list) -> object:
+def partially_connected_fullduplex_hexagonal_mesh(network_nodes: list, link_specifications: list) -> Topology:
     """Creates a partially-connected mesh network topology.
 
     Args:
@@ -58,6 +58,7 @@ def partially_connected_fullduplex_hexagonal_mesh(network_nodes: list, link_spec
             link_forward.nodes = [node, neighbor]
 
             topology._adj[node][neighbor] = link_forward
+            node.links.append(link_forward)
 
             # Creating network link backward object
             link_backward = NetworkLink()
@@ -65,6 +66,7 @@ def partially_connected_fullduplex_hexagonal_mesh(network_nodes: list, link_spec
             link_backward.nodes = [neighbor, node]
 
             topology._adj[neighbor][node] = link_backward
+            neighbor.links.append(link_backward)
 
     # Checking if the number of link specifications is equal to the number of links in the network topology
     links_with_missing_specs = sum([spec["number_of_objects"] for spec in link_specifications]) != len(physical_links)

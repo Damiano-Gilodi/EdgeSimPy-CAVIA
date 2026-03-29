@@ -99,13 +99,13 @@ def plot_topology():
             es_y = bs.coordinates[1] + 0.35 + (i * 0.08)
             services_here = [s for s in Service.all() if hasattr(s, "server") and s.server == es]
             for k, service in enumerate(services_here):
-                s_x = es_x - 0.10 - (k * 0.08)
+                s_x = es_x - 0.10 - (k * 0.70)
                 s_y = es_y
                 plt.scatter(s_x, s_y, s=380, c="#D2B4DE", edgecolors="black", zorder=6)
                 plt.text(
                     s_x,
                     s_y + 0.08,
-                    f"S{service.id}({service.label})\n d:{getattr(service, 'processing_time', 0)} s: {getattr(service, 'processing_output', 0)}",
+                    f"S{service.id}\n d:{getattr(service, 'processing_time', 0)}\n s: {getattr(service, 'processing_output', 0)}",
                     fontsize=8,
                     ha="center",
                     color="#4A235A",

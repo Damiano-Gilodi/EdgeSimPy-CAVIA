@@ -1,44 +1,20 @@
-import pytest
+from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
+import pytest  # type: ignore
 
 from edge_sim_py.components.application import Application
 from edge_sim_py.components.base_station import BaseStation
 from edge_sim_py.components.container_image import ContainerImage
 from edge_sim_py.components.container_layer import ContainerLayer
 from edge_sim_py.components.container_registry import ContainerRegistry
-from edge_sim_py.components.data_packet import DataPacket
 from edge_sim_py.components.edge_server import EdgeServer
 from edge_sim_py.components.flow_scheduling import max_min_fairness
-from edge_sim_py.components.network_flow import NetworkFlow
-from edge_sim_py.components.network_link import NetworkLink
 from edge_sim_py.components.network_switch import NetworkSwitch
 from edge_sim_py.components.service import Service
-from edge_sim_py.components.topology import Topology
 from edge_sim_py.components.user import User
 from edge_sim_py.dataset_generator.edge_servers import jetson_tx2
 from edge_sim_py.dataset_generator.map import hexagonal_grid
 from edge_sim_py.dataset_generator.network_switches import sample_switch
 from edge_sim_py.dataset_generator.network_topologies import partially_connected_fullduplex_hexagonal_mesh
-
-
-def reset_components():
-
-    for cls in (
-        Topology,
-        NetworkLink,
-        BaseStation,
-        NetworkSwitch,
-        EdgeServer,
-        Service,
-        User,
-        Application,
-        DataPacket,
-        NetworkFlow,
-        ContainerImage,
-        ContainerLayer,
-        ContainerRegistry,
-    ):
-        cls._instances = []
-        cls._object_count = 0
 
 
 class DummySchedule:
@@ -68,7 +44,7 @@ def dummy_model():
 @pytest.fixture
 def basic_topology():
 
-    reset_components()
+    EdgeSimPyResetter.clear_all()
 
     # Creating the map coordinates
     map_coordinates = hexagonal_grid(x_size=3, y_size=3)

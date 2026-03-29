@@ -127,6 +127,7 @@ class User(ComponentManager, Agent):
             "Coordinates": self.coordinates,
             "Base Station": f"{self.base_station} ({self.base_station.coordinates})" if self.base_station else None,
             "Delays": copy.deepcopy(self.delays),
+            "Delay SLAs": copy.deepcopy(self.delay_slas),
             "Communication Paths": copy.deepcopy(self.communication_paths),
             "Making Requests": copy.deepcopy(self.making_requests),
             "Access History": copy.deepcopy(access_history),
