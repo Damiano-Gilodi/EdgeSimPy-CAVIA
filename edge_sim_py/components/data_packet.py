@@ -309,13 +309,21 @@ class DataPacket(ComponentManager, Agent):
             hop = self._current_hop
             link = 0
 
+            # --- FIX PER CAVIA / SAME-NODE PLACEMENT ---
+            # Se è il primo hop in assoluto, il tempo di inizio è quello attuale del simulatore
+            if len(self._link_hops) == 0:
+                start_time = self.model.schedule.steps
+            else:
+                start_time = self._link_hops[-1].end_time
+            # --------------------------------------------
+
             link_hop = LinkHop(
                 hop_index=hop,
                 link_index=link,
                 source=self._total_path[hop][link].id,
                 target=self._total_path[hop][link].id,
-                start_time=self._link_hops[-1].end_time,
-                end_time=self._link_hops[-1].end_time + (service.processing_time if service else 0),
+                start_time=start_time,  # self._link_hops[-1].end_time,
+                end_time=start_time + (service.processing_time if service else 0),
                 queue_delay=0,
                 transmission_delay=0,
                 processing_delay=service.processing_time if service else 0,
