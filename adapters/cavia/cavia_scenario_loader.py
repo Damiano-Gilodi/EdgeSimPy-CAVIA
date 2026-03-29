@@ -1,8 +1,7 @@
 import pickle
-import os
 import networkx as nx  # type: ignore
 
-from adapters.cavia.find_valid_scenarios import find_or_load_scenarios
+from edge_sim_py.components import User
 from edge_sim_py.components.application import Application
 from edge_sim_py.components.base_station import BaseStation
 from edge_sim_py.components.edge_server import EdgeServer
@@ -32,7 +31,10 @@ class CaviaScenarioLoader:
         # Placement with x_ui
         self._place_services(service_map, node_server_map)
 
-        return topology, app
+        # Load User
+        user = self._build_user(app)
+
+        return topology, app, user
 
     def _load_topology(self):
         G = nx.read_graphml(self.physical_graph_path)
@@ -141,50 +143,16 @@ class CaviaScenarioLoader:
 
                 service._available = True
 
+    def _build_user(self, app):
 
-# physical_graph_path = "scenarios/cavia/1_26_solution_v0/physical_graph.graphml"
-# app_graph_path = "scenarios/cavia/1_26_solution_v0/ms/1MMM.graphml"
-# pkl_path = "scenarios/cavia/1_26_solution_v0/var_coeff_values_1MMM_lrslss.pkl"
+        user = User()
+        user.set_packet_size_strategy(mode="fixed", size=app.services[0].processing_output)
+        user._set_initial_position(app.services[0].server.coordinates)
+        user.mobility_model = self.static_dummy_mobility
 
+        user._connect_to_application(app=app, delay_sla=self.data_pkl.get("latency_limit", 0)[0])
 
-HOME_DIR = os.path.expanduser("~")
-BASE_PATH = os.path.join(HOME_DIR, "Desktop")
-PKL_PATH = os.path.join(BASE_PATH, "CAVIA", "src", "LR")
+        return user
 
-scenarios = find_or_load_scenarios(PKL_PATH)
-scenario = scenarios[0]
-print("Loading scenario:", scenario + "\n")
-
-physical_graph_path = os.path.join(BASE_PATH, scenario, "physical_graph.graphml")
-app_graph_path = os.path.join(BASE_PATH, scenario, "ms/1MMM.graphml")
-pkl_path = os.path.join(BASE_PATH, scenario, "var_coeff_values_1MMM_slss.pkl")
-
-topology, app = CaviaScenarioLoader(
-    physical_graph_path=physical_graph_path,
-    app_graph_path=app_graph_path,
-    pkl_path=pkl_path,
-).build_scenario()
-
-# VERIFY LOAD TOPOLOGY
-# topology, node_server_map = CaviaScenarioLoader(
-#     physical_graph_path=physical_graph_path,
-#     app_graph_path=app_graph_path,
-#     pkl_path=pkl_path,
-# )._load_topology()
-# print("server:", node_server_map, len(node_server_map))
-# print("basestation:", BaseStation.all(), len(BaseStation.all()))
-# print("switch:", NetworkSwitch.all(), len(NetworkSwitch.all()))
-
-# VERIFY LOAD SERVICES
-# app, service_map = CaviaScenarioLoader(
-#     physical_graph_path=physical_graph_path,
-#     app_graph_path=app_graph_path,
-#     pkl_path=pkl_path,
-# )._load_services()
-# print("service:", service_map, len(service_map))
-# print("application:", Application.all()[0].services)
-
-for server in EdgeServer.all():
-    print(f"Server {server.id} has services: {[s.label for s in server.services]}, {[s.id for s in server.services]}")
-    print(f"  CPU capacity: {server.cpu}, Memory capacity: {server.memory}")
-    print(f"  CPU demand: {server.cpu_demand}, Memory demand: {server.memory_demand}")
+    def static_dummy_mobility(user):
+        user.coordinates_trace.append(user.coordinates)
