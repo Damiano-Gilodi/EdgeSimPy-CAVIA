@@ -116,7 +116,7 @@ class Service(ComponentManager, Agent):
                 "processing_output": self.processing_output,
             },
             "relationships": {
-                "application": {"class": type(self.application).__name__, "id": self.application.id},
+                "application": {"class": type(self.application).__name__, "id": self.application.id} if self.application else None,
                 "server": {"class": type(self.server).__name__, "id": self.server.id} if self.server else None,
             },
         }

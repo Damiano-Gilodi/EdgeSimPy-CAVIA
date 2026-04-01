@@ -2,53 +2,69 @@ import os
 import json
 import pickle
 
+from adapters.cavia.utils.path import BASE_PATH, PKL_PATH
+
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 VALID_SCENARIOS = os.path.join(CURRENT_DIR, "valid_scenarios_cache.json")
 
 
-def find_or_load_scenarios(base_path, force_rescan=False):
+def find_or_load_scenarios(pkl_path=PKL_PATH, force_rescan=False):
 
     if os.path.exists(VALID_SCENARIOS) and not force_rescan:
         print(f"Found valid_scenarios_cache.json in: {VALID_SCENARIOS}")
         with open(VALID_SCENARIOS, "r") as f:
             return json.load(f)
 
-    valid_folders = []
+    valid_data = {}
 
-    subfolders = [f.path for f in os.scandir(base_path) if f.is_dir()]
+    subfolders = [f.path for f in os.scandir(pkl_path) if f.is_dir()]
 
     for folder in subfolders:
-        is_valid = False
+        valid_apps_in_folder = []
+
         for root, _, files in os.walk(folder):
             for file in files:
-                if file.endswith(".pkl"):
-                    with open(os.path.join(root, file), "rb") as f:
+                # Cerchiamo solo i file dei coefficienti che terminano con _slss.pkl
+                if file.endswith("_slss.pkl") and file.startswith("var_coeff_values_"):
+                    full_path = os.path.join(root, file)
+                    with open(full_path, "rb") as f:
                         data = pickle.load(f)
                         if data.get("status") == 2:
-                            parts = folder.split(os.sep)
-                            if "CAVIA" in parts:
-                                rel_path = os.path.join(*parts[parts.index("CAVIA") :])
-                                valid_folders.append(rel_path)
-                            else:
-                                valid_folders.append(os.path.basename(folder))
+                            app_name = file.replace("var_coeff_values_", "").replace("_slss.pkl", "")
+                            valid_apps_in_folder.append(app_name)
 
-                            is_valid = True
-                            break
-            if is_valid:
-                break
+        if valid_apps_in_folder:
+            parts = folder.split(os.sep)
+            rel_path = os.path.join(*parts[parts.index("CAVIA") :]) if "CAVIA" in parts else os.path.basename(folder)
+            valid_data[rel_path] = sorted(valid_apps_in_folder)
 
-    valid_folders = sorted(list(set(valid_folders)))
+    valid_data = dict(sorted(valid_data.items()))
     with open(VALID_SCENARIOS, "w") as f:
-        json.dump(valid_folders, f, indent=4)
+        json.dump(valid_data, f, indent=4)
 
-    print(f"Found {len(valid_folders)} valid scenarios in '{VALID_SCENARIOS}'")
-    return valid_folders
+    return valid_data
 
 
-# PKL_BASE_PATH = os.path.join(os.path.expanduser("~"), "Desktop", "CAVIA", "src", "LR")
-# scenarios = find_or_load_scenarios(PKL_BASE_PATH)
+def get_scenario_paths(scenario_name, app_type, pkl_path=PKL_PATH, force_rescan=False):
 
-# CAVIA/src/LR/1_26_solution_v1
-# print(f"Trovati {len(scenarios)} scenari validi: ")
-# for s in scenarios:
-#     print(s)
+    scenarios = find_or_load_scenarios(pkl_path, force_rescan=force_rescan)
+    matched_keys = [k for k in scenarios.keys() if scenario_name in k]
+    if not matched_keys:
+        raise ValueError(f"Scenario '{scenario_name}' non trovato.")
+
+    scenario_rel_path = matched_keys[0]
+    valid_apps = scenarios[scenario_rel_path]
+
+    if app_type not in valid_apps:
+        raise ValueError(f"L'app '{app_type}' nello scenario '{scenario_name}' non ha status=2 o non esiste.")
+
+    scenario_dir = os.path.join(BASE_PATH, scenario_rel_path)
+    phys_path = os.path.join(scenario_dir, "physical_graph.graphml")
+    app_path = os.path.join(scenario_dir, "ms", f"{app_type}.graphml")
+    pkl_path = os.path.join(scenario_dir, f"var_coeff_values_{app_type}_slss.pkl")
+
+    for p in [phys_path, app_path, pkl_path]:
+        if not os.path.exists(p):
+            raise FileNotFoundError(f"File non trovato: {p}")
+
+    return phys_path, app_path, pkl_path

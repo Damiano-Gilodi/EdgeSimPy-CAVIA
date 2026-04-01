@@ -1,182 +1,1292 @@
-[
-    "CAVIA/src/LR/1_26_solution_v1",
-    "CAVIA/src/LR/1_26_solution_v10",
-    "CAVIA/src/LR/1_26_solution_v100",
-    "CAVIA/src/LR/1_26_solution_v101",
-    "CAVIA/src/LR/1_26_solution_v102",
-    "CAVIA/src/LR/1_26_solution_v103",
-    "CAVIA/src/LR/1_26_solution_v104",
-    "CAVIA/src/LR/1_26_solution_v105",
-    "CAVIA/src/LR/1_26_solution_v106",
-    "CAVIA/src/LR/1_26_solution_v107",
-    "CAVIA/src/LR/1_26_solution_v112",
-    "CAVIA/src/LR/1_26_solution_v113",
-    "CAVIA/src/LR/1_26_solution_v114",
-    "CAVIA/src/LR/1_26_solution_v115",
-    "CAVIA/src/LR/1_26_solution_v118",
-    "CAVIA/src/LR/1_26_solution_v12",
-    "CAVIA/src/LR/1_26_solution_v120",
-    "CAVIA/src/LR/1_26_solution_v122",
-    "CAVIA/src/LR/1_26_solution_v126",
-    "CAVIA/src/LR/1_26_solution_v127",
-    "CAVIA/src/LR/1_26_solution_v128",
-    "CAVIA/src/LR/1_26_solution_v129",
-    "CAVIA/src/LR/1_26_solution_v133",
-    "CAVIA/src/LR/1_26_solution_v134",
-    "CAVIA/src/LR/1_26_solution_v136",
-    "CAVIA/src/LR/1_26_solution_v137",
-    "CAVIA/src/LR/1_26_solution_v14",
-    "CAVIA/src/LR/1_26_solution_v140",
-    "CAVIA/src/LR/1_26_solution_v141",
-    "CAVIA/src/LR/1_26_solution_v144",
-    "CAVIA/src/LR/1_26_solution_v146",
-    "CAVIA/src/LR/1_26_solution_v147",
-    "CAVIA/src/LR/1_26_solution_v148",
-    "CAVIA/src/LR/1_26_solution_v15",
-    "CAVIA/src/LR/1_26_solution_v150",
-    "CAVIA/src/LR/1_26_solution_v152",
-    "CAVIA/src/LR/1_26_solution_v153",
-    "CAVIA/src/LR/1_26_solution_v154",
-    "CAVIA/src/LR/1_26_solution_v155",
-    "CAVIA/src/LR/1_26_solution_v158",
-    "CAVIA/src/LR/1_26_solution_v159",
-    "CAVIA/src/LR/1_26_solution_v161",
-    "CAVIA/src/LR/1_26_solution_v163",
-    "CAVIA/src/LR/1_26_solution_v164",
-    "CAVIA/src/LR/1_26_solution_v169",
-    "CAVIA/src/LR/1_26_solution_v170",
-    "CAVIA/src/LR/1_26_solution_v171",
-    "CAVIA/src/LR/1_26_solution_v172",
-    "CAVIA/src/LR/1_26_solution_v173",
-    "CAVIA/src/LR/1_26_solution_v174",
-    "CAVIA/src/LR/1_26_solution_v175",
-    "CAVIA/src/LR/1_26_solution_v176",
-    "CAVIA/src/LR/1_26_solution_v177",
-    "CAVIA/src/LR/1_26_solution_v179",
-    "CAVIA/src/LR/1_26_solution_v18",
-    "CAVIA/src/LR/1_26_solution_v180",
-    "CAVIA/src/LR/1_26_solution_v181",
-    "CAVIA/src/LR/1_26_solution_v185",
-    "CAVIA/src/LR/1_26_solution_v187",
-    "CAVIA/src/LR/1_26_solution_v188",
-    "CAVIA/src/LR/1_26_solution_v190",
-    "CAVIA/src/LR/1_26_solution_v192",
-    "CAVIA/src/LR/1_26_solution_v194",
-    "CAVIA/src/LR/1_26_solution_v197",
-    "CAVIA/src/LR/1_26_solution_v198",
-    "CAVIA/src/LR/1_26_solution_v20",
-    "CAVIA/src/LR/1_26_solution_v200",
-    "CAVIA/src/LR/1_26_solution_v202",
-    "CAVIA/src/LR/1_26_solution_v203",
-    "CAVIA/src/LR/1_26_solution_v205",
-    "CAVIA/src/LR/1_26_solution_v208",
-    "CAVIA/src/LR/1_26_solution_v209",
-    "CAVIA/src/LR/1_26_solution_v210",
-    "CAVIA/src/LR/1_26_solution_v211",
-    "CAVIA/src/LR/1_26_solution_v212",
-    "CAVIA/src/LR/1_26_solution_v214",
-    "CAVIA/src/LR/1_26_solution_v215",
-    "CAVIA/src/LR/1_26_solution_v216",
-    "CAVIA/src/LR/1_26_solution_v217",
-    "CAVIA/src/LR/1_26_solution_v218",
-    "CAVIA/src/LR/1_26_solution_v22",
-    "CAVIA/src/LR/1_26_solution_v220",
-    "CAVIA/src/LR/1_26_solution_v221",
-    "CAVIA/src/LR/1_26_solution_v222",
-    "CAVIA/src/LR/1_26_solution_v224",
-    "CAVIA/src/LR/1_26_solution_v229",
-    "CAVIA/src/LR/1_26_solution_v231",
-    "CAVIA/src/LR/1_26_solution_v232",
-    "CAVIA/src/LR/1_26_solution_v233",
-    "CAVIA/src/LR/1_26_solution_v234",
-    "CAVIA/src/LR/1_26_solution_v237",
-    "CAVIA/src/LR/1_26_solution_v24",
-    "CAVIA/src/LR/1_26_solution_v240",
-    "CAVIA/src/LR/1_26_solution_v241",
-    "CAVIA/src/LR/1_26_solution_v243",
-    "CAVIA/src/LR/1_26_solution_v244",
-    "CAVIA/src/LR/1_26_solution_v245",
-    "CAVIA/src/LR/1_26_solution_v250",
-    "CAVIA/src/LR/1_26_solution_v251",
-    "CAVIA/src/LR/1_26_solution_v253",
-    "CAVIA/src/LR/1_26_solution_v254",
-    "CAVIA/src/LR/1_26_solution_v255",
-    "CAVIA/src/LR/1_26_solution_v256",
-    "CAVIA/src/LR/1_26_solution_v257",
-    "CAVIA/src/LR/1_26_solution_v258",
-    "CAVIA/src/LR/1_26_solution_v26",
-    "CAVIA/src/LR/1_26_solution_v28",
-    "CAVIA/src/LR/1_26_solution_v31",
-    "CAVIA/src/LR/1_26_solution_v33",
-    "CAVIA/src/LR/1_26_solution_v34",
-    "CAVIA/src/LR/1_26_solution_v38",
-    "CAVIA/src/LR/1_26_solution_v39",
-    "CAVIA/src/LR/1_26_solution_v40",
-    "CAVIA/src/LR/1_26_solution_v43",
-    "CAVIA/src/LR/1_26_solution_v44",
-    "CAVIA/src/LR/1_26_solution_v45",
-    "CAVIA/src/LR/1_26_solution_v46",
-    "CAVIA/src/LR/1_26_solution_v48",
-    "CAVIA/src/LR/1_26_solution_v5",
-    "CAVIA/src/LR/1_26_solution_v50",
-    "CAVIA/src/LR/1_26_solution_v51",
-    "CAVIA/src/LR/1_26_solution_v52",
-    "CAVIA/src/LR/1_26_solution_v53",
-    "CAVIA/src/LR/1_26_solution_v56",
-    "CAVIA/src/LR/1_26_solution_v59",
-    "CAVIA/src/LR/1_26_solution_v61",
-    "CAVIA/src/LR/1_26_solution_v62",
-    "CAVIA/src/LR/1_26_solution_v63",
-    "CAVIA/src/LR/1_26_solution_v64",
-    "CAVIA/src/LR/1_26_solution_v65",
-    "CAVIA/src/LR/1_26_solution_v66",
-    "CAVIA/src/LR/1_26_solution_v67",
-    "CAVIA/src/LR/1_26_solution_v69",
-    "CAVIA/src/LR/1_26_solution_v70",
-    "CAVIA/src/LR/1_26_solution_v71",
-    "CAVIA/src/LR/1_26_solution_v75",
-    "CAVIA/src/LR/1_26_solution_v77",
-    "CAVIA/src/LR/1_26_solution_v78",
-    "CAVIA/src/LR/1_26_solution_v81",
-    "CAVIA/src/LR/1_26_solution_v83",
-    "CAVIA/src/LR/1_26_solution_v84",
-    "CAVIA/src/LR/1_26_solution_v85",
-    "CAVIA/src/LR/1_26_solution_v86",
-    "CAVIA/src/LR/1_26_solution_v88",
-    "CAVIA/src/LR/1_26_solution_v89",
-    "CAVIA/src/LR/1_26_solution_v90",
-    "CAVIA/src/LR/1_26_solution_v91",
-    "CAVIA/src/LR/1_26_solution_v92",
-    "CAVIA/src/LR/1_26_solution_v93",
-    "CAVIA/src/LR/1_26_solution_v94",
-    "CAVIA/src/LR/1_26_solution_v95",
-    "CAVIA/src/LR/1_51_solution_v14",
-    "CAVIA/src/LR/1_51_solution_v16",
-    "CAVIA/src/LR/1_51_solution_v17",
-    "CAVIA/src/LR/1_51_solution_v24",
-    "CAVIA/src/LR/1_51_solution_v29",
-    "CAVIA/src/LR/1_51_solution_v6",
-    "CAVIA/src/LR/1_51_solution_v8",
-    "CAVIA/src/LR/2_26_solution_v107",
-    "CAVIA/src/LR/2_26_solution_v111",
-    "CAVIA/src/LR/2_26_solution_v117",
-    "CAVIA/src/LR/2_26_solution_v128",
-    "CAVIA/src/LR/2_26_solution_v129",
-    "CAVIA/src/LR/2_26_solution_v137",
-    "CAVIA/src/LR/2_26_solution_v140",
-    "CAVIA/src/LR/2_26_solution_v145",
-    "CAVIA/src/LR/2_26_solution_v146",
-    "CAVIA/src/LR/2_26_solution_v149",
-    "CAVIA/src/LR/2_26_solution_v154",
-    "CAVIA/src/LR/2_26_solution_v19",
-    "CAVIA/src/LR/2_26_solution_v30",
-    "CAVIA/src/LR/2_26_solution_v50",
-    "CAVIA/src/LR/2_26_solution_v52",
-    "CAVIA/src/LR/2_26_solution_v55",
-    "CAVIA/src/LR/2_26_solution_v62",
-    "CAVIA/src/LR/2_26_solution_v74",
-    "CAVIA/src/LR/2_26_solution_v78",
-    "CAVIA/src/LR/2_26_solution_v81",
-    "CAVIA/src/LR/2_26_solution_v91",
-    "CAVIA/src/LR/2_26_solution_v95"
-]
+{
+    "CAVIA/src/LR/1_26_solution_v1": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v10": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v100": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v101": [
+        "1MSM",
+        "1MSS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v102": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v103": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v104": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v105": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v106": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v107": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v112": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v113": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v114": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v115": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v118": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v12": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v120": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v122": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v126": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v127": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v128": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v129": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v133": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v134": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v136": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v137": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v14": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v140": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v141": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v144": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v146": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v147": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v148": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v15": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v150": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v152": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v153": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v154": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v155": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v158": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v159": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v161": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v163": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v164": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v169": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v170": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v171": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v173": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v174": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v176": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v177": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v179": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v18": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v180": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v181": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v185": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v187": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v188": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v190": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v192": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v194": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v197": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v198": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v20": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v200": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v202": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v203": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v205": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v208": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v209": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v210": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v211": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v212": [
+        "1MSM",
+        "1MSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v214": [
+        "1MSM",
+        "1MSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v215": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v216": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v217": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v218": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v22": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v220": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v221": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v222": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v224": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v229": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v231": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v232": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v233": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v234": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v237": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v24": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v240": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v241": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v243": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v244": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v245": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v250": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v251": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v253": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v254": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v255": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v256": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v257": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v258": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v26": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v28": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v31": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v33": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v34": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v38": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v39": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v40": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v43": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v44": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v45": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v46": [
+        "1SMM",
+        "1SMS",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v48": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v5": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_26_solution_v50": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v51": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v52": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v53": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v56": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v59": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v61": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v62": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v63": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v64": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v65": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v66": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v67": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v69": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v70": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v71": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v75": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v77": [
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v78": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v81": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v83": [
+        "1MMM",
+        "1MMS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v84": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v85": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v86": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v88": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v89": [
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v90": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v91": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v92": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v93": [
+        "1MMM",
+        "1MMS",
+        "1MSM",
+        "1MSS",
+        "1SMM",
+        "1SMS",
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v94": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_26_solution_v95": [
+        "1SSM",
+        "1SSS"
+    ],
+    "CAVIA/src/LR/1_51_solution_v14": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_51_solution_v16": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_51_solution_v17": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_51_solution_v24": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_51_solution_v29": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_51_solution_v6": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/1_51_solution_v8": [
+        "1MMM"
+    ],
+    "CAVIA/src/LR/2_26_solution_v107": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v111": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v117": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v128": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v129": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v137": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v140": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v145": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v146": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v149": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v154": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v19": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS",
+        "2SSM",
+        "2SSS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v30": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v50": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS",
+        "2SSM",
+        "2SSS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v52": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v55": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v62": [
+        "2SSM",
+        "2SSS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v74": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v78": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v81": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v91": [
+        "2SMM",
+        "2SMS"
+    ],
+    "CAVIA/src/LR/2_26_solution_v95": [
+        "2MMM",
+        "2MMS",
+        "2SMM",
+        "2SMS"
+    ]
+}

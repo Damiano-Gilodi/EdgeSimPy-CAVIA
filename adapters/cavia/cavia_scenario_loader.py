@@ -1,6 +1,8 @@
 import pickle
 import networkx as nx  # type: ignore
+import numpy as np
 
+from adapters.cavia.utils.distributions import STRATEGY_REGISTRY
 from edge_sim_py.components import User
 from edge_sim_py.components.application import Application
 from edge_sim_py.components.base_station import BaseStation
@@ -9,15 +11,19 @@ from edge_sim_py.components.network_link import NetworkLink
 from edge_sim_py.components.network_switch import NetworkSwitch
 from edge_sim_py.components.service import Service
 from edge_sim_py.components.topology import Topology
+from edge_sim_py.components.user_access_patterns.circular_duration_and_interval_access_pattern import CircularDurationAndIntervalAccessPattern
 from edge_sim_py.dataset_generator.map.hexagonal_grid import hexagonal_grid
 from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 
 
 class CaviaScenarioLoader:
-    def __init__(self, physical_graph_path, app_graph_path, pkl_path):
+    def __init__(self, physical_graph_path, app_graph_path, pkl_path, dist="deterministic"):
         self.physical_graph_path = physical_graph_path
         self.app_graph_path = app_graph_path
         self.pkl_path = pkl_path
+
+        self.strategy = STRATEGY_REGISTRY.get(dist, STRATEGY_REGISTRY["deterministic"])
+        self.rng = np.random.default_rng(seed=42)
 
         with open(self.pkl_path, "rb") as f:
             self.data_pkl = pickle.load(f)
@@ -29,16 +35,16 @@ class CaviaScenarioLoader:
         # Load topology, basestations, switch, server
         topology, node_server_map = self._load_topology()
 
-        # Load Services, Application
-        app, service_map = self._load_services()
+        # Load Services, Applications
+        apps, service_map = self._load_services()
 
         # Placement with x_ui
         self._place_services(service_map, node_server_map)
 
-        # Load User
-        user = self._build_user(app)
+        # Load Users
+        users = self._build_users(apps)
 
-        return topology, app, user
+        return topology, apps, users
 
     def _load_topology(self):
         G = nx.read_graphml(self.physical_graph_path)
@@ -102,30 +108,40 @@ class CaviaScenarioLoader:
     def _load_services(self):
         G = nx.read_graphml(self.app_graph_path)
         service_map = {}
-        app = Application()
+        apps = []
 
         for node_id, data in G.nodes(data=True):
-            # print(f"Processing node {node_id} with data: {data}")
 
             u_id = int(node_id)
             service = Service(u_id)
             service.label = data.get("node_type", f"service_{u_id}")
             service.cpu_demand = int(data.get("0", 0))
-            # service.memory_demand = int(data.get("3", 0))
-            # service.processing_time = int(data.get("4", 0))
-            service.step = int(data.get("step", 0))
+
+            mean_val = float(data.get("4", 0))
+            service.processing_time = int(self.strategy(mean_val, self.rng))
+            service.processing_output = 1
+
             service_map[u_id] = service
 
-        for u, v, data in G.edges(data=True):
-            # print(f"Processing edge {u} -> {v} with data: {data}")
+        input_node_ids = [n for n, d in G.nodes(data=True) if d.get("node_type") == "input"]
 
-            service_u = service_map[int(u)]
-            service_u.processing_output = int(data.get("3", 0))
+        for start_node in input_node_ids:
 
-        for service in sorted(service_map.values(), key=lambda s: s.step):
-            app.connect_to_service(service)
+            app = Application()
 
-        return app, service_map
+            nodes_in_chain = list(nx.descendants(G, start_node))
+            nodes_in_chain.append(start_node)
+
+            subgraph = G.subgraph(nodes_in_chain)
+            sorted_chain = list(nx.topological_sort(subgraph))
+
+            for node_id in sorted_chain:
+
+                app.connect_to_service(service_map[int(node_id)])
+
+            apps.append(app)
+
+        return apps, service_map
 
     def _place_services(self, service_map, node_server_map):
 
@@ -147,16 +163,23 @@ class CaviaScenarioLoader:
 
                 service._available = True
 
-    def _build_user(self, app):
+    def _build_users(self, apps):
 
-        user = User()
-        user.set_packet_size_strategy(mode="fixed", size=app.services[0].processing_output)
-        user._set_initial_position(app.services[0].server.coordinates)
-        user.mobility_model = self.static_dummy_mobility
+        users = []
 
-        user._connect_to_application(app=app, delay_sla=self.data_pkl.get("latency_limit", 0)[0])
+        for app in apps:
+            user = User()
+            user.set_packet_size_strategy(mode="fixed", size=1)
 
-        return user
+            user._set_initial_position(app.services[0].server.coordinates)
+
+            user.mobility_model = self.static_dummy_mobility
+            user._connect_to_application(app=app, delay_sla=self.data_pkl.get("latency_limit", 0)[0])
+            CircularDurationAndIntervalAccessPattern(user=user, app=app, start=1, duration_values=[1], interval_values=[100])
+
+            users.append(user)
+
+        return users
 
     def static_dummy_mobility(user):
         user.coordinates_trace.append(user.coordinates)

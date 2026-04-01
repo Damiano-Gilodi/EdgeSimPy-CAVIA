@@ -1,14 +1,9 @@
 import os
 import pickle
-import sys
 
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(base_dir)
+from adapters.cavia.utils.path import PKL_PATH
 
-HOME_DIR = os.path.expanduser("~")
-PKL_BASE_PATH = os.path.join(HOME_DIR, "Desktop", "CAVIA", "src", "LR")
-
-pkl_path = os.path.join(PKL_BASE_PATH, "1_26_solution_v1/var_coeff_values_1MMM_slss.pkl")
+pkl_path = os.path.join(PKL_PATH, "2_26_solution_v107/var_coeff_values_2SMM_slss.pkl")
 
 
 with open(pkl_path, "rb") as f:
