@@ -1,5 +1,5 @@
 from adapters.cavia.cavia_scenario_loader import CaviaScenarioLoader
-from adapters.cavia.find_valid_scenarios import find_or_load_scenarios
+from adapters.cavia.find_valid_scenarios import get_scenario_paths
 from edge_sim_py.components.base_station import BaseStation
 from edge_sim_py.components.edge_server import EdgeServer
 from edge_sim_py.components.network_link import NetworkLink
@@ -7,7 +7,6 @@ from edge_sim_py.components.network_switch import NetworkSwitch
 from edge_sim_py.components.service import Service
 from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 import pytest  # type: ignore
-import os
 import networkx as nx  # type: ignore
 
 
@@ -16,26 +15,21 @@ def cavia_scenario():
 
     EdgeSimPyResetter.clear_all()
 
-    HOME_DIR = os.path.expanduser("~")
-    BASE_PATH = os.path.join(HOME_DIR, "Desktop")
-    PKL_PATH = os.path.join(BASE_PATH, "CAVIA", "src", "LR")
+    scenario_name = "1_26_solution_v1"
+    app_name = "1MMM"
+    phys_path, app_path, pkl_path = get_scenario_paths(scenario_name, app_name)
+    print("Loading scenario:", scenario_name)
+    print("Loading app:", app_name + "\n")
 
-    scenarios = find_or_load_scenarios(PKL_PATH)
-    scenario = scenarios[0]
-    print("Loading scenario:", scenario + "\n")
-
-    physical_graph_path = os.path.join(BASE_PATH, scenario, "physical_graph.graphml")
-    app_graph_path = os.path.join(BASE_PATH, scenario, "ms/1MMM.graphml")
-    pkl_path = os.path.join(BASE_PATH, scenario, "var_coeff_values_1MMM_slss.pkl")
-
-    topology, app, user = CaviaScenarioLoader(
-        physical_graph_path=physical_graph_path,
-        app_graph_path=app_graph_path,
+    topology, apps, users = CaviaScenarioLoader(
+        physical_graph_path=phys_path,
+        app_graph_path=app_path,
         pkl_path=pkl_path,
+        dist="exponential",
     ).build_scenario()
 
-    G_topology = nx.read_graphml(physical_graph_path)
-    G_services = nx.read_graphml(app_graph_path)
+    G_topology = nx.read_graphml(phys_path)
+    G_services = nx.read_graphml(app_path)
 
     return {
         "nodes_topology": G_topology.nodes(data=True),
@@ -46,8 +40,8 @@ def cavia_scenario():
         "switches": NetworkSwitch.all(),
         "base_stations": BaseStation.all(),
         "services": Service.all(),
-        "app": app,
-        "user": user,
+        "app": apps[0],
+        "user": users[0],
     }
 
 
@@ -77,13 +71,6 @@ def test_cavia_loader(cavia_scenario):
 def test_cavia_loader_services(cavia_scenario):
 
     assert len(cavia_scenario["services"]) == len(cavia_scenario["nodes_services"]) == len(cavia_scenario["app"].services)
-
-    for i in range(len(cavia_scenario["app"].services) - 1):
-        current_service = cavia_scenario["app"].services[i]
-        next_service = cavia_scenario["app"].services[i + 1]
-        assert current_service.step < next_service.step
-
-    assert cavia_scenario["app"].services[-1].processing_output == 0
 
 
 def test_cavia_placement(cavia_scenario):

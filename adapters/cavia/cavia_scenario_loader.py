@@ -119,7 +119,7 @@ class CaviaScenarioLoader:
 
             mean_val = float(data.get("4", 0))
             service.processing_time = int(self.strategy(mean_val, self.rng))
-            service.processing_output = 1
+            service.processing_output = 1e-9
 
             service_map[u_id] = service
 
@@ -169,7 +169,7 @@ class CaviaScenarioLoader:
 
         for app in apps:
             user = User()
-            user.set_packet_size_strategy(mode="fixed", size=1)
+            user.set_packet_size_strategy(mode="fixed", size=1e-9)
 
             user._set_initial_position(app.services[0].server.coordinates)
 

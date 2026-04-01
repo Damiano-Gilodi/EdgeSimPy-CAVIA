@@ -1,7 +1,6 @@
 """Contains network-flow-related functionality."""
 
 # EdgeSimPy components
-from typing import Any
 from edge_sim_py.component_manager import ComponentManager
 
 # Mesa modules

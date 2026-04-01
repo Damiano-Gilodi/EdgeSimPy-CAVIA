@@ -338,15 +338,18 @@ class DataPacket(ComponentManager, Agent):
         hop = flow.metadata["index_hop"]
         link = flow.metadata["index_link"]
 
+        is_dummy_size = self.size < 0.001
+        compensation = 1 if is_dummy_size else 0
+
         link_hop = LinkHop(
             hop_index=hop,
             link_index=link,
             source=flow.source.id,
             target=flow.target.id,
             start_time=flow.start,
-            end_time=flow.end + (service.processing_time if service else 0),
+            end_time=flow.end + (service.processing_time if service else 0) - compensation,
             queue_delay=flow._queue_delay,
-            transmission_delay=(flow.end - flow.start) - flow._queue_delay,
+            transmission_delay=0 if is_dummy_size else max(0, (flow.end - flow.start) - flow._queue_delay),
             processing_delay=service.processing_time if service else 0,
             propagation_delay=flow.topology[flow.path[0]][flow.path[1]]["delay"],
             min_bandwidth=min(flow._bandwidth_history),
