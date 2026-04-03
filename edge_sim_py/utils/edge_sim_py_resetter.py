@@ -11,6 +11,7 @@ from edge_sim_py.components.network_switch import NetworkSwitch
 from edge_sim_py.components.service import Service
 from edge_sim_py.components.topology import Topology
 from edge_sim_py.components.user import User
+from edge_sim_py.components.user_access_patterns.circular_duration_and_interval_access_pattern import CircularDurationAndIntervalAccessPattern
 
 
 class EdgeSimPyResetter:
@@ -30,6 +31,7 @@ class EdgeSimPyResetter:
             ContainerImage,
             ContainerLayer,
             ContainerRegistry,
+            CircularDurationAndIntervalAccessPattern,
         ]
         for cls in classes_to_reset:
             if hasattr(cls, "_instances"):

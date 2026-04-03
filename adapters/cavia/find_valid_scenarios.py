@@ -5,13 +5,13 @@ import pickle
 from adapters.cavia.utils.path import BASE_PATH, PKL_PATH
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-VALID_SCENARIOS = os.path.join(CURRENT_DIR, "valid_scenarios_cache.json")
+VALID_SCENARIOS = os.path.join(CURRENT_DIR, "dump_scenarios", "valid_scenarios_cache.json")
 
 
 def find_or_load_scenarios(pkl_path=PKL_PATH, force_rescan=False):
 
     if os.path.exists(VALID_SCENARIOS) and not force_rescan:
-        print(f"Found valid_scenarios_cache.json in: {VALID_SCENARIOS}")
+        # print(f"Found valid_scenarios_cache.json in: {VALID_SCENARIOS}")
         with open(VALID_SCENARIOS, "r") as f:
             return json.load(f)
 

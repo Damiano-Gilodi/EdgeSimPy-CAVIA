@@ -1,3 +1,5 @@
+import json
+import os
 import pickle
 import networkx as nx  # type: ignore
 import numpy as np
@@ -107,6 +109,11 @@ class CaviaScenarioLoader:
 
     def _load_services(self):
         G = nx.read_graphml(self.app_graph_path)
+
+        if not self._is_graph_valid(G):
+            self._log_invalid_scenario(self.app_graph_path)
+            raise ValueError(f"Graph {self.app_graph_path} is invalid.")
+
         service_map = {}
         apps = []
 
@@ -183,3 +190,37 @@ class CaviaScenarioLoader:
 
     def static_dummy_mobility(user):
         user.coordinates_trace.append(user.coordinates)
+
+    def _is_graph_valid(self, G):
+        if not nx.is_directed_acyclic_graph(G):
+            return False
+        if any(n for n, d in G.nodes(data=True) if d.get("node_type") != "input" and G.in_degree(n) == 0):
+            return False
+        return True
+
+    def _log_invalid_scenario(self, app_graph_path):
+
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(current_dir, "dump_scenarios", "invalid_scenarios.json")
+
+        if os.path.exists(file_path):
+            with open(file_path, "r") as f:
+                try:
+                    data = json.load(f)
+                except json.JSONDecodeError:
+                    data = {}
+        else:
+            data = {}
+
+        parts = app_graph_path.split(os.sep)
+        scenario = parts[-3] if len(parts) > 2 else "Unknown"
+        app_name = os.path.splitext(os.path.basename(app_graph_path))[0]
+
+        if scenario not in data:
+            data[scenario] = []
+
+        if app_name not in data[scenario]:
+            data[scenario].append(app_name)
+
+        with open(file_path, "w") as f:
+            json.dump(data, f, indent=4)

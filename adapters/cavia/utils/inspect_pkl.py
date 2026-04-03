@@ -3,7 +3,7 @@ import pickle
 
 from adapters.cavia.utils.path import PKL_PATH
 
-pkl_path = os.path.join(PKL_PATH, "2_26_solution_v107/var_coeff_values_2SMM_slss.pkl")
+pkl_path = os.path.join(PKL_PATH, "2_26_solution_v7/var_coeff_values_2SSS_slss.pkl")
 
 
 with open(pkl_path, "rb") as f:
