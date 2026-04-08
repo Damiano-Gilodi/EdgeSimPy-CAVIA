@@ -136,3 +136,7 @@ dmypy.json
 edge_sim_py/__main__.py
 datasets/
 logs/
+
+analysis/processed_data/
+*.pkl
+*.msgpack
