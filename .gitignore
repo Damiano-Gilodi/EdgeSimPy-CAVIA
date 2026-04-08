@@ -140,3 +140,6 @@ logs/
 analysis/processed_data/
 *.pkl
 *.msgpack
+
+adapters/cavia/dump_scenarios/
+*.json

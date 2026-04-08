@@ -26,7 +26,7 @@ def load_all_simulations(base_logs_path):
 
             df_temp["Distribution"] = distribution
             df_temp["Scenario"] = scenario
-            df_temp["App"] = app_name
+            df_temp["App_ms"] = app_name
             df_temp["Run"] = run_id
 
             all_data.append(df_temp)
