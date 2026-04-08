@@ -39,6 +39,9 @@ def find_or_load_scenarios(pkl_path=PKL_PATH, force_rescan=False):
             valid_data[rel_path] = sorted(valid_apps_in_folder)
 
     valid_data = dict(sorted(valid_data.items()))
+    output_dir = os.path.dirname(VALID_SCENARIOS)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
     with open(VALID_SCENARIOS, "w") as f:
         json.dump(valid_data, f, indent=4)
 

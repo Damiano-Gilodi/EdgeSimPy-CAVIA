@@ -132,22 +132,18 @@ class CaviaScenarioLoader:
             service_map[u_id] = service
 
         input_node_ids = [n for n, d in G.nodes(data=True) if d.get("node_type") == "input"]
+        dest_node_ids = [n for n, d in G.nodes(data=True) if d.get("node_type") == "destination"]
 
         for start_node in input_node_ids:
 
-            app = Application()
+            target = dest_node_ids[0]
+            paths = list(nx.all_simple_paths(G, source=start_node, target=target))
 
-            nodes_in_chain = list(nx.descendants(G, start_node))
-            nodes_in_chain.append(start_node)
-
-            subgraph = G.subgraph(nodes_in_chain)
-            sorted_chain = list(nx.topological_sort(subgraph))
-
-            for node_id in sorted_chain:
-
-                app.connect_to_service(service_map[int(node_id)])
-
-            apps.append(app)
+            for p in paths:
+                app = Application()
+                for node_id in p:
+                    app.connect_to_service(service_map[int(node_id)])
+                apps.append(app)
 
         return apps, service_map
 
@@ -183,7 +179,7 @@ class CaviaScenarioLoader:
 
             user.mobility_model = self.static_dummy_mobility
             user._connect_to_application(app=app, delay_sla=self.data_pkl.get("latency_limit", 0)[0])
-            CircularDurationAndIntervalAccessPattern(user=user, app=app, start=1, duration_values=[1], interval_values=[100])
+            CircularDurationAndIntervalAccessPattern(user=user, app=app, start=1, duration_values=[1], interval_values=[501])
 
             users.append(user)
 
