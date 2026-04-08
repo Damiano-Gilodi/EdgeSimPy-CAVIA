@@ -19,13 +19,14 @@ from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 
 
 class CaviaScenarioLoader:
-    def __init__(self, physical_graph_path, app_graph_path, pkl_path, dist="deterministic"):
+    def __init__(self, physical_graph_path, app_graph_path, pkl_path, seed=42, dist="deterministic"):
         self.physical_graph_path = physical_graph_path
         self.app_graph_path = app_graph_path
         self.pkl_path = pkl_path
+        self.seed = seed
 
         self.strategy = STRATEGY_REGISTRY.get(dist, STRATEGY_REGISTRY["deterministic"])
-        self.rng = np.random.default_rng(seed=42)
+        self.rng = np.random.default_rng(seed)
 
         with open(self.pkl_path, "rb") as f:
             self.data_pkl = pickle.load(f)
