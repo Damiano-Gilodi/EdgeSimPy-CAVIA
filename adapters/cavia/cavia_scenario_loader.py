@@ -183,7 +183,7 @@ class CaviaScenarioLoader:
 
             user.mobility_model = self.static_dummy_mobility
             user._connect_to_application(app=app, delay_sla=self.data_pkl.get("latency_limit", 0)[0])
-            CircularDurationAndIntervalAccessPattern(user=user, app=app, start=1, duration_values=[1], interval_values=[100])
+            CircularDurationAndIntervalAccessPattern(user=user, app=app, start=1, duration_values=[1], interval_values=[501])
 
             users.append(user)
 
