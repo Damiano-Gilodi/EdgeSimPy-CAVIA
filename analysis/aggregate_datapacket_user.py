@@ -29,7 +29,7 @@ def load_all_simulations(base_logs_path):
             with open(u_file, "rb") as f:
                 df_u = pd.DataFrame(msgpack.unpackb(f.read(), strict_map_key=False))
 
-            df_temp = df_p.merge(df_u, left_on="User", right_on="Instance ID", how="left", suffixes=("", "_user"))
+            df_temp = df_p.merge(df_u, left_on=["User", "Time Step"], right_on=["Instance ID", "Time Step"], how="left", suffixes=("", "_user"))
 
             df_temp["Distribution"] = distribution
             df_temp["Scenario"] = scenario
