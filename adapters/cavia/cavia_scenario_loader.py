@@ -128,7 +128,11 @@ class CaviaScenarioLoader:
             service.cpu_demand = int(data.get("0", 0))
 
             mean_val = float(data.get("4", 0))
-            service.processing_time = int(self.strategy(mean_val, self.rng))
+            if mean_val <= 0:
+                service.processing_time = 0
+            else:
+                service.processing_time = max(1, int(self.strategy(mean_val, self.rng)))
+
             service.processing_output = 1e-9
 
             service_map[u_id] = service

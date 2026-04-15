@@ -6,7 +6,7 @@ authors = [
     { name = "Paulo Severo", email = "paulo.severo@edu.pucrs.br" }
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 dependencies = [
     "Mesa>=1.0.0,<2.0.0",
@@ -28,6 +28,7 @@ dev = [
     "matplotlib (>=3.10.7,<4.0.0)",
     "numpy (>=1.24,<2.0)",
     "seaborn (>=0.13.2,<0.14.0)",
+    "scipy (>=1.17.1,<2.0.0)",
 ]
 
 [build-system]

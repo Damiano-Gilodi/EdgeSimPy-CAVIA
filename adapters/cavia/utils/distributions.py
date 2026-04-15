@@ -1,3 +1,7 @@
+import numpy as np
+from scipy.stats import truncnorm  # type: ignore
+
+
 def dist_deterministic(mean, rng):
     return mean
 
@@ -12,7 +16,30 @@ def dist_uniform(mean, rng):
 
 def dist_normal(mean, rng):
     sigma = mean * 0.1
-    return max(0, rng.normal(loc=mean, scale=sigma))
+    a = (1 - mean) / sigma
+    b = np.inf
+    return truncnorm.rvs(a, b, loc=mean, scale=sigma, random_state=rng)
+
+
+def dist_normal_wide(mean, rng):
+    sigma = mean * 0.5
+    a = (1 - mean) / sigma
+    b = np.inf
+    return truncnorm.rvs(a, b, loc=mean, scale=sigma, random_state=rng)
+
+
+def dist_normal_wide_truncated(mean, rng):
+    sigma = mean * 0.5
+    lower_bound = mean * 0.75
+    a = (lower_bound - mean) / sigma
+    b = np.inf
+    return truncnorm.rvs(a, b, loc=mean, scale=sigma, random_state=rng)
+
+
+def dist_gamma_k2(mean, rng):
+    k = 2.0
+    theta = mean / k
+    return rng.gamma(shape=k, scale=theta)
 
 
 def dist_bimodal(mean, rng):
@@ -27,5 +54,8 @@ STRATEGY_REGISTRY = {
     "exponential": dist_exponential,
     "uniform": dist_uniform,
     "normal": dist_normal,
+    "normal_wide": dist_normal_wide,
+    "normal_wide_trunc": dist_normal_wide_truncated,
+    "gamma_k2": dist_gamma_k2,
     "bimodal": dist_bimodal,
 }
