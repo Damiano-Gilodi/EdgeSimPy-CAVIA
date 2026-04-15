@@ -2,15 +2,18 @@ import msgpack  # type: ignore
 import pandas as pd  # type: ignore
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
+LOGS_PATH = BASE_DIR.parent / "simulation" / "cavia_simulation" / "logs"
 
-def load_all_simulations(base_logs_path):
+
+def load_data_user_simulations(base_logs_path):
     all_data = []
     base_dir = Path(base_logs_path)
 
     packet_files = list(base_dir.rglob("DataPacket.msgpack"))
 
     if not packet_files:
-        print(f"Nessun file trovato in {base_logs_path}")
+        print(f"No file found in {base_logs_path}")
         return pd.DataFrame()
 
     for file_path in packet_files:
@@ -41,13 +44,13 @@ def load_all_simulations(base_logs_path):
     return pd.concat(all_data, ignore_index=True)
 
 
-base_dir = Path(__file__).resolve().parent
-path_log = base_dir.parent / "simulation" / "cavia simulation" / "logs"
+if __name__ == "__main__":
+    print("Building dataset of Datapacket and User...")
 
-full_dataset = load_all_simulations(path_log)
+    datapacket_user_dataset = load_data_user_simulations(LOGS_PATH)
 
-print(full_dataset.head())
-print(f"\nDistribuzioni caricate: {full_dataset['Distribution'].unique()}")
+    print(datapacket_user_dataset.head())
+    print(f"\nLoaded distributions: {datapacket_user_dataset['Distribution'].unique()}")
 
-Path("analysis/processed_data").mkdir(parents=True, exist_ok=True)
-full_dataset.to_pickle("analysis/processed_data/dataset_raw_datpacket_user.pkl")
+    Path("analysis/processed_data").mkdir(parents=True, exist_ok=True)
+    datapacket_user_dataset.to_pickle("analysis/processed_data/dataset_raw_datpacket_user.pkl")
