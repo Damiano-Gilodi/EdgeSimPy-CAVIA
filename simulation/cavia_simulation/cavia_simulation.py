@@ -1,3 +1,5 @@
+import gc
+import json
 import os
 import shutil
 import time
@@ -10,9 +12,45 @@ from adapters.cavia.utils.path import PKL_PATH
 from edge_sim_py.component_manager import ComponentManager
 from edge_sim_py.components.data_packet import DataPacket
 from edge_sim_py.simulator import Simulator
+from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 
 BASE_DIR = Path(__file__).resolve().parent
 os.chdir(BASE_DIR)
+
+RESET_OUTPUTS = True
+PROGRESS_FILE = BASE_DIR / "simulation_progress.json"
+
+
+def make_progress_key(distribution, scenario, app):
+    return f"{distribution}|{scenario}|{app}"
+
+
+def load_completed_apps(progress_file):
+    if progress_file.exists():
+        with open(progress_file, "r", encoding="utf-8") as f:
+            return set(json.load(f))
+    return set()
+
+
+def save_completed_apps(progress_file, completed_apps):
+    with open(progress_file, "w", encoding="utf-8") as f:
+        json.dump(sorted(completed_apps), f, indent=4)
+
+
+def is_app_marked_completed(completed_apps, distribution, scenario, app):
+    return make_progress_key(distribution, scenario, app) in completed_apps
+
+
+def mark_app_completed(completed_apps, distribution, scenario, app):
+    completed_apps.add(make_progress_key(distribution, scenario, app))
+
+
+def my_algorithm(parameters):
+    return
+
+
+def static_dummy_mobility(user):
+    user.coordinates_trace.append(user.coordinates)
 
 
 def main():
@@ -21,10 +59,15 @@ def main():
     logs_dir = BASE_DIR / "logs"
     datasets_dir = BASE_DIR / "datasets"
 
-    if logs_dir.exists():
-        shutil.rmtree(logs_dir)
-    if datasets_dir.exists():
-        shutil.rmtree(datasets_dir)
+    if RESET_OUTPUTS:
+        if logs_dir.exists():
+            shutil.rmtree(logs_dir)
+        if datasets_dir.exists():
+            shutil.rmtree(datasets_dir)
+        if PROGRESS_FILE.exists():
+            PROGRESS_FILE.unlink()
+
+    completed_apps = load_completed_apps(PROGRESS_FILE)
 
     valid_scenarios = find_or_load_scenarios(PKL_PATH, force_rescan=True)
 
@@ -48,6 +91,11 @@ def main():
             invalid_apps = []
 
             for app_name in apps:
+
+                if is_app_marked_completed(completed_apps, dist_type, scenario_name, app_name):
+                    success_apps.append(app_name)
+                    continue
+
                 try:
                     for run_index in range(NUM_RUNS):
 
@@ -69,12 +117,6 @@ def main():
                         current_logs_dir = BASE_DIR / "logs" / dist_type / scenario_name / app_name / f"run_{run_index}"
                         current_logs_dir.mkdir(parents=True, exist_ok=True)
 
-                        def my_algorithm(parameters):
-                            return
-
-                        def static_dummy_mobility(user):
-                            user.coordinates_trace.append(user.coordinates)
-
                         simulator = Simulator(
                             dump_interval=1,
                             tick_unit="milliseconds",
@@ -88,7 +130,15 @@ def main():
                         simulator.initialize(input_file=f"datasets/{scenario_name}.json")
                         simulator.run_model()
 
+                        del simulator
+                        EdgeSimPyResetter.clear_all()
+                        ComponentManager._ComponentManager__model = None
+                        gc.collect()
+
                     success_apps.append(app_name)
+
+                    mark_app_completed(completed_apps, dist_type, scenario_name, app_name)
+                    save_completed_apps(PROGRESS_FILE, completed_apps)
 
                 except ValueError as e:
                     print(f"Skipping {app_name}: {e}")
