@@ -86,13 +86,13 @@ def build_consistency_dataset(base_logs_path, cavia_base_path, skip_special_node
     raw_df = pd.concat(all_data, ignore_index=True)
 
     consistency_df = (
-        raw_df.groupby(["Distribution", "Scenario", "App_ms", "Service_ID", "Node_Type", "Cavia_Mean"], dropna=False)["Processing_Time"]
+        raw_df.groupby(["Distribution", "Scenario", "App_ms", "Service_ID", "Node_Type", "Cavia_Mean"], dropna=False)
         .agg(
-            Num_Runs="count",
-            Empirical_Mean="mean",
-            Empirical_Std="std",
-            Empirical_Min="min",
-            Empirical_Max="max",
+            Num_Runs=("Run", "count"),
+            Empirical_Mean=("Processing_Time", "mean"),
+            Empirical_Std=("Processing_Time", "std"),
+            Empirical_Min=("Processing_Time", "min"),
+            Empirical_Max=("Processing_Time", "max"),
         )
         .reset_index()
     )
