@@ -16,7 +16,7 @@ def cavia_scenario():
     EdgeSimPyResetter.clear_all()
 
     scenario_name = "1_26_solution_v0"
-    app_name = "1MMM"
+    app_name = "1SMM"
     phys_path, app_path, pkl_path = get_scenario_paths(scenario_name, app_name, force_rescan=True)
     print("Loading scenario:", scenario_name)
     print("Loading app:", app_name + "\n")
