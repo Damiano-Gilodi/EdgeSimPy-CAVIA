@@ -34,7 +34,7 @@ def main():
             raise ValueError(f"Strategy '{d}' non trovata nel registry. Strategie disponibili: {list(STRATEGY_REGISTRY.keys())}")
 
     BASE_SEED = 42
-    NUM_RUNS = 10
+    NUM_RUNS = 100
 
     for dist_type in distributions:
         print(f"\nDISTRIBUTION: {dist_type}")
