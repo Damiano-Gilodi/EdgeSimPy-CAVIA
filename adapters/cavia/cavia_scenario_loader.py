@@ -25,7 +25,9 @@ class CaviaScenarioLoader:
         self.pkl_path = pkl_path
         self.seed = seed
 
-        self.strategy = STRATEGY_REGISTRY.get(dist, STRATEGY_REGISTRY["deterministic"])
+        if dist not in STRATEGY_REGISTRY:
+            raise ValueError(f"Strategy '{dist}' non trovata nel registry. Strategie disponibili: {list(STRATEGY_REGISTRY.keys())}")
+        self.strategy = STRATEGY_REGISTRY[dist]
         self.rng = np.random.default_rng(seed)
 
         with open(self.pkl_path, "rb") as f:

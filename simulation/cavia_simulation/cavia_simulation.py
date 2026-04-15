@@ -4,6 +4,7 @@ from pathlib import Path
 
 from adapters.cavia.cavia_scenario_loader import CaviaScenarioLoader
 from adapters.cavia.find_valid_scenarios import find_or_load_scenarios, get_scenario_paths
+from adapters.cavia.utils.distributions import STRATEGY_REGISTRY
 from adapters.cavia.utils.path import PKL_PATH
 from edge_sim_py.component_manager import ComponentManager
 from edge_sim_py.components.data_packet import DataPacket
@@ -18,7 +19,11 @@ def main():
 
     valid_scenarios = find_or_load_scenarios(PKL_PATH, force_rescan=True)
 
-    distributions = ["exponential", "gaussian", "uniform"]
+    distributions = ["exponential", "normal", "uniform"]
+    for d in distributions:
+        if d not in STRATEGY_REGISTRY:
+            raise ValueError(f"Strategy '{d}' non trovata nel registry. Strategie disponibili: {list(STRATEGY_REGISTRY.keys())}")
+
     BASE_SEED = 42
     NUM_RUNS = 10
 
