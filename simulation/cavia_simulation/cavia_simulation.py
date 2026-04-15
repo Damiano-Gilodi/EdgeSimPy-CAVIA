@@ -1,4 +1,5 @@
 import os
+import shutil
 import time
 from pathlib import Path
 
@@ -17,9 +18,17 @@ os.chdir(BASE_DIR)
 def main():
     global_start = time.perf_counter()
 
+    logs_dir = BASE_DIR / "logs"
+    datasets_dir = BASE_DIR / "datasets"
+
+    if logs_dir.exists():
+        shutil.rmtree(logs_dir)
+    if datasets_dir.exists():
+        shutil.rmtree(datasets_dir)
+
     valid_scenarios = find_or_load_scenarios(PKL_PATH, force_rescan=True)
 
-    distributions = ["exponential", "normal", "uniform"]
+    distributions = ["exponential", "uniform", "gamma_k2", "normal", "normal_wide", "normal_wide_trunc"]
     for d in distributions:
         if d not in STRATEGY_REGISTRY:
             raise ValueError(f"Strategy '{d}' non trovata nel registry. Strategie disponibili: {list(STRATEGY_REGISTRY.keys())}")
