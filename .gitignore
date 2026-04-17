@@ -145,3 +145,4 @@ adapters/cavia/dump_scenarios/
 *.json
 
 simulation/cavia_simulation/*.json
+simulation/cavia_simulation/state

@@ -7,9 +7,11 @@ import time
 from adapters.cavia.find_valid_scenarios import find_or_load_scenarios
 from adapters.cavia.utils.distributions import STRATEGY_REGISTRY
 from adapters.cavia.utils.path import PKL_PATH
+from simulation.cavia_simulation.utils.progress_tracker import is_app_marked_completed, load_completed_apps
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROGRESS_FILE = BASE_DIR / "simulation" / "cavia_simulation" / "simulation_progress.json"
 
 
 def run_script(script_path, distribution, scenario, app, num_runs=10, seed=42):
@@ -53,6 +55,13 @@ def main():
             print(f"START: {dist_type} | {scenario_name}")
 
             for app_name in apps:
+
+                completed_apps = load_completed_apps(PROGRESS_FILE)
+
+                if is_app_marked_completed(completed_apps, dist_type, scenario_name, app_name):
+                    print(f"Skip: {dist_type} | {scenario_name} | {app_name}")
+                    continue
+
                 run_script(sim_script, dist_type, scenario_name, app_name, num_runs=100, seed=42)
 
     end = time.perf_counter()

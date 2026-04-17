@@ -1,7 +1,5 @@
 import argparse
 import gc
-import json
-import os
 import shutil
 from pathlib import Path
 
@@ -12,35 +10,14 @@ from edge_sim_py.component_manager import ComponentManager
 from edge_sim_py.components.data_packet import DataPacket
 from edge_sim_py.simulator import Simulator
 from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
+from simulation.cavia_simulation.utils.progress_tracker import load_completed_apps, mark_app_completed, save_completed_apps
 
 BASE_DIR = Path(__file__).resolve().parent
-os.chdir(BASE_DIR)
 
-PROGRESS_FILE = BASE_DIR / "simulation_progress.json"
+STATE_DIR = BASE_DIR / "state"
+STATE_DIR.mkdir(parents=True, exist_ok=True)
 
-
-def make_progress_key(distribution, scenario, app):
-    return f"{distribution}|{scenario}|{app}"
-
-
-def load_completed_apps(progress_file):
-    if progress_file.exists():
-        with open(progress_file, "r", encoding="utf-8") as f:
-            return set(json.load(f))
-    return set()
-
-
-def save_completed_apps(progress_file, completed_apps):
-    with open(progress_file, "w", encoding="utf-8") as f:
-        json.dump(sorted(completed_apps), f, indent=4)
-
-
-def is_app_marked_completed(completed_apps, distribution, scenario, app):
-    return make_progress_key(distribution, scenario, app) in completed_apps
-
-
-def mark_app_completed(completed_apps, distribution, scenario, app):
-    completed_apps.add(make_progress_key(distribution, scenario, app))
+PROGRESS_FILE = STATE_DIR / "simulation_progress.json"
 
 
 def my_algorithm(parameters):
@@ -75,12 +52,6 @@ def main():
 
     if dist_type not in STRATEGY_REGISTRY:
         raise ValueError(f"Strategy '{dist_type}' not found in registry. " f"Strategy available: {list(STRATEGY_REGISTRY.keys())}")
-
-    completed_apps = load_completed_apps(PROGRESS_FILE)
-
-    if not args.force and is_app_marked_completed(completed_apps, dist_type, scenario_name, app_name):
-        print(f"Already completed: {dist_type} | {scenario_name} | {app_name}")
-        return
 
     app_logs_dir = BASE_DIR / "logs" / dist_type / scenario_name / app_name
     if args.reset_app_logs and app_logs_dir.exists():
@@ -122,6 +93,7 @@ def main():
         ComponentManager._ComponentManager__model = None
         gc.collect()
 
+    completed_apps = load_completed_apps(PROGRESS_FILE)
     mark_app_completed(completed_apps, dist_type, scenario_name, app_name)
     save_completed_apps(PROGRESS_FILE, completed_apps)
 
