@@ -70,7 +70,7 @@ def main():
             dist=dist_type,
         ).build_scenario()
 
-        ComponentManager.export_scenario(save_to_file=True, file_name=scenario_name)
+        ComponentManager.export_scenario(save_to_file=True, file_name=scenario_name, output_dir=BASE_DIR / "datasets")
 
         current_logs_dir = app_logs_dir / f"run_{run_index}"
         current_logs_dir.mkdir(parents=True, exist_ok=True)
