@@ -12,12 +12,14 @@ from edge_sim_py.components.service import Service
 from edge_sim_py.components.topology import Topology
 from edge_sim_py.components.user import User
 from edge_sim_py.components.user_access_patterns.circular_duration_and_interval_access_pattern import CircularDurationAndIntervalAccessPattern
+from edge_sim_py.simulator import Simulator
 
 
 class EdgeSimPyResetter:
     @staticmethod
     def clear_all():
         classes_to_reset = [
+            Simulator,
             Topology,
             NetworkLink,
             BaseStation,
@@ -38,3 +40,24 @@ class EdgeSimPyResetter:
                 cls._instances = []
             if hasattr(cls, "_object_count"):
                 cls._object_count = 0
+
+    @staticmethod
+    def print_instances_status():
+        classes_to_check = [
+            Simulator,
+            Topology,
+            NetworkLink,
+            BaseStation,
+            NetworkSwitch,
+            EdgeServer,
+            Service,
+            User,
+            Application,
+            DataPacket,
+            NetworkFlow,
+        ]
+
+        print("Instance counters:")
+        for cls in classes_to_check:
+            n = len(cls._instances) if hasattr(cls, "_instances") else "N/A"
+            print(f"  {cls.__name__}: {n}")
