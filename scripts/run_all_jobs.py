@@ -12,7 +12,7 @@ from adapters.cavia.utils.path import PKL_PATH
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-def run_script(script_path, distribution, scenario, app, num_runs=100):
+def run_script(script_path, distribution, scenario, app, num_runs=10, seed=42):
     cmd = [
         sys.executable,
         str(script_path),
@@ -24,6 +24,8 @@ def run_script(script_path, distribution, scenario, app, num_runs=100):
         app,
         "--num-runs",
         str(num_runs),
+        "--base-seed",
+        str(seed),
     ]
 
     result = subprocess.run(cmd)
@@ -51,7 +53,7 @@ def main():
             print(f"START: {dist_type} | {scenario_name}")
 
             for app_name in apps:
-                run_script(sim_script, dist_type, scenario_name, app_name, num_runs=10)
+                run_script(sim_script, dist_type, scenario_name, app_name, num_runs=100, seed=42)
 
     end = time.perf_counter()
     print(f"\nALL JOBS COMPLETED : {end - start:.2f} s ({(end - start)/60:.2f} min)")

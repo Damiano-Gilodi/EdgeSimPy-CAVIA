@@ -105,7 +105,7 @@ def main():
         current_logs_dir.mkdir(parents=True, exist_ok=True)
 
         simulator = Simulator(
-            dump_interval=1,
+            dump_interval=100,
             tick_unit="milliseconds",
             tick_duration=1,
             stopping_criterion=lambda model: all(d._status == "finished" for d in DataPacket.all()) or model.schedule.steps >= 500,
