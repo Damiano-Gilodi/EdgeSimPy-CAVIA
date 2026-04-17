@@ -9,6 +9,7 @@ Example:
 # Python libraries
 import os
 import json
+from pathlib import Path
 
 
 class ComponentManager:
@@ -34,7 +35,11 @@ class ComponentManager:
 
     @classmethod
     def export_scenario(
-        cls, ignore_list: list = ["Simulator", "Topology", "NetworkFlow", "DataPacket"], save_to_file: bool = False, file_name: str = "dataset"
+        cls,
+        ignore_list: list = ["Simulator", "Topology", "NetworkFlow", "DataPacket"],
+        save_to_file: bool = False,
+        file_name: str = "dataset",
+        output_dir="datasets",
     ) -> dict:
         """Exports metadata about the simulation model to a Python dictionary. If the "save_to_file" attribute is set to True, the
         external dataset file generated is saved inside the "datasets/" directory by default.
@@ -49,15 +54,17 @@ class ComponentManager:
         """
         scenario = {}
 
-        # Creating the "datasets" directory if it doesn't exists
-        if not os.path.exists("datasets/"):
-            os.makedirs("datasets")
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
 
         for component in ComponentManager.__subclasses__():
             if component.__name__ not in ignore_list:
                 scenario[component.__name__] = [instance._to_dict() for instance in component._instances]
-                with open(f"datasets/{file_name}.json", "w", encoding="UTF-8") as output_file:
-                    json.dump(scenario, output_file, indent=4)
+
+        if save_to_file:
+            output_path = output_dir / f"{file_name}.json"
+            with open(output_path, "w", encoding="UTF-8") as output_file:
+                json.dump(scenario, output_file, indent=4)
 
         return scenario
 
