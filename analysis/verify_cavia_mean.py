@@ -12,7 +12,7 @@ CAVIA_BASE_PATH = BASE_DIR.parents[1] / "CAVIA" / "src" / "SIMPY"
 
 OUTPUT_DIR = BASE_DIR / "processed_data"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-OUTPUT_FILE = OUTPUT_DIR / "service_consistency_cavia_mean_check.pkl"
+OUTPUT_FILE = OUTPUT_DIR / "service_cavia_mean.pkl"
 
 
 def load_cavia_means_for_app(app_graph_path, skip_special_nodes=False):
@@ -105,7 +105,7 @@ def build_consistency_dataset(base_logs_path, cavia_base_path, skip_special_node
 
 
 if __name__ == "__main__":
-    print("Building consistency cavia mean dataset...")
+    print("Building service cavia mean dataset...")
 
     consistency_df = build_consistency_dataset(base_logs_path=LOGS_PATH, cavia_base_path=CAVIA_BASE_PATH, skip_special_nodes=False)
 
