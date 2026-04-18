@@ -2,7 +2,7 @@ import json
 import os
 import pickle
 import networkx as nx  # type: ignore
-import numpy as np
+import numpy as np  # type: ignore
 
 from adapters.cavia.utils.distributions import STRATEGY_REGISTRY
 from edge_sim_py.components import User

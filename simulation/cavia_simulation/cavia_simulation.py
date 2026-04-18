@@ -85,7 +85,7 @@ def main():
             logs_directory=str(current_logs_dir),
         )
 
-        simulator.initialize(input_file=f"datasets/{scenario_name}.json")
+        simulator.initialize(input_file=str(BASE_DIR / "datasets" / f"{scenario_name}.json"))
         simulator.run_model()
 
         del simulator

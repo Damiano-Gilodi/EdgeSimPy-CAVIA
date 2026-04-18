@@ -11,7 +11,7 @@ from simulation.cavia_simulation.utils.progress_tracker import is_app_marked_com
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-PROGRESS_FILE = BASE_DIR / "simulation" / "cavia_simulation" / "simulation_progress.json"
+PROGRESS_FILE = BASE_DIR / "simulation" / "cavia_simulation" / "state" / "simulation_progress.json"
 
 
 def run_script(script_path, distribution, scenario, app, num_runs=10, seed=42):
