@@ -1,25 +1,16 @@
-import hashlib
 import os
 import subprocess
 import sys
-from pathlib import Path
 import time
 
 from adapters.cavia.find_valid_scenarios import find_or_load_scenarios
 from adapters.cavia.utils.distributions import STRATEGY_REGISTRY
-from adapters.cavia.utils.path import PKL_PATH
+from adapters.cavia.utils.path import PKL_PATH, BASE_PATH
 from simulation.cavia_simulation.utils.progress_tracker import is_app_marked_completed, load_completed_apps
+from simulation.cavia_simulation.utils.seed_utils import generate_base_seed
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-PROGRESS_FILE = BASE_DIR / "simulation" / "cavia_simulation" / "state" / "simulation_progress.json"
-
-
-def generate_seed(first: str, second: str):
-
-    combined = first + second
-    hashed = hashlib.md5(combined.encode())
-    return int(hashed.hexdigest(), 16)
+PROGRESS_FILE = BASE_PATH / "simulation" / "cavia_simulation" / "state" / "simulation_progress.json"
 
 
 def run_script(script_path, distribution, scenario, app, num_runs=10, seed=42):
@@ -54,7 +45,7 @@ def main():
         if d not in STRATEGY_REGISTRY:
             raise ValueError(f"Strategy '{d}' not found in registry. " f"Strategy available: {list(STRATEGY_REGISTRY.keys())}")
 
-    sim_script = BASE_DIR / "simulation" / "cavia_simulation" / "cavia_simulation.py"
+    sim_script = BASE_PATH / "simulation" / "cavia_simulation" / "cavia_simulation.py"
 
     for dist_type in distributions:
         for scenario_rel_path, apps in valid_scenarios.items():
@@ -70,9 +61,9 @@ def main():
                     print(f"Skip: {dist_type} | {scenario_name} | {app_name}")
                     continue
 
-                seed_gen = generate_seed(scenario_name, app_name)
+                seed_gen = generate_base_seed(scenario_name, app_name)
 
-                run_script(sim_script, dist_type, scenario_name, app_name, num_runs=100, seed=seed_gen)
+                run_script(sim_script, dist_type, scenario_name, app_name, num_runs=1000, seed=seed_gen)
 
     end = time.perf_counter()
     print(f"\nALL JOBS COMPLETED : {end - start:.2f} s ({(end - start)/60:.2f} min)")

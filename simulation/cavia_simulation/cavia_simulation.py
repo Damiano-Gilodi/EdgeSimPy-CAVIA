@@ -11,10 +11,11 @@ from edge_sim_py.components.data_packet import DataPacket
 from edge_sim_py.simulator import Simulator
 from edge_sim_py.utils.edge_sim_py_resetter import EdgeSimPyResetter
 from simulation.cavia_simulation.utils.progress_tracker import load_completed_apps, mark_app_completed, save_completed_apps
+from simulation.cavia_simulation.utils.seed_utils import derive_run_seed
 
-BASE_DIR = Path(__file__).resolve().parent
+CURRENT_DIR = Path(__file__).resolve().parent
 
-STATE_DIR = BASE_DIR / "state"
+STATE_DIR = CURRENT_DIR / "state"
 STATE_DIR.mkdir(parents=True, exist_ok=True)
 
 PROGRESS_FILE = STATE_DIR / "simulation_progress.json"
@@ -53,14 +54,14 @@ def main():
     if dist_type not in STRATEGY_REGISTRY:
         raise ValueError(f"Strategy '{dist_type}' not found in registry. " f"Strategy available: {list(STRATEGY_REGISTRY.keys())}")
 
-    app_logs_dir = BASE_DIR / "logs" / dist_type / scenario_name / app_name
+    app_logs_dir = CURRENT_DIR / "logs" / dist_type / scenario_name / app_name
     if args.reset_app_logs and app_logs_dir.exists():
         shutil.rmtree(app_logs_dir)
 
     phys_path, app_path, pkl_path = get_scenario_paths(scenario_name, app_name)
 
     for run_index in range(num_runs):
-        current_seed = base_seed + run_index
+        current_seed = derive_run_seed(base_seed, run_index)
 
         CaviaScenarioLoader(
             physical_graph_path=phys_path,
@@ -70,7 +71,7 @@ def main():
             dist=dist_type,
         ).build_scenario()
 
-        ComponentManager.export_scenario(save_to_file=True, file_name=scenario_name, output_dir=BASE_DIR / "datasets")
+        ComponentManager.export_scenario(save_to_file=True, file_name=scenario_name, output_dir=CURRENT_DIR / "datasets")
 
         current_logs_dir = app_logs_dir / f"run_{run_index}"
         current_logs_dir.mkdir(parents=True, exist_ok=True)
@@ -86,7 +87,7 @@ def main():
             disable_agent_log_saving=["EdgeServer", "NetworkSwitch"],
         )
 
-        simulator.initialize(input_file=str(BASE_DIR / "datasets" / f"{scenario_name}.json"))
+        simulator.initialize(input_file=str(CURRENT_DIR / "datasets" / f"{scenario_name}.json"))
         simulator.run_model()
 
         del simulator

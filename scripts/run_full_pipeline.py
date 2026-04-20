@@ -1,6 +1,7 @@
-from pathlib import Path
 import subprocess
 import sys
+
+from adapters.cavia.utils.path import BASE_PATH
 
 
 def run_script(script_path):
@@ -11,11 +12,10 @@ def run_script(script_path):
 
 
 def main():
-    base_dir = Path(__file__).resolve().parent.parent
 
-    simulation_script = base_dir / "scripts" / "run_all_jobs.py"
-    verify_script = base_dir / "analysis" / "verify_cavia_mean.py"
-    aggregate_script = base_dir / "analysis" / "build_worst_case_dataset.py"
+    simulation_script = BASE_PATH / "scripts" / "run_all_jobs.py"
+    verify_script = BASE_PATH / "analysis" / "verify_cavia_mean.py"
+    aggregate_script = BASE_PATH / "analysis" / "build_worst_case_dataset.py"
 
     run_script(simulation_script)
     run_script(verify_script)

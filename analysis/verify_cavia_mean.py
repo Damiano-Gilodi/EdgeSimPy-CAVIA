@@ -1,16 +1,16 @@
 from pathlib import Path
 import pandas as pd  # type: ignore
+from adapters.cavia.utils.path import BASE_PATH
 import numpy as np  # type: ignore
 import networkx as nx  # type: ignore
 import msgpack  # type: ignore
 
 
-BASE_DIR = Path(__file__).resolve().parent
-LOGS_PATH = BASE_DIR.parent / "simulation" / "cavia_simulation" / "logs"
+LOGS_PATH = BASE_PATH / "simulation" / "cavia_simulation" / "logs"
 
-CAVIA_BASE_PATH = BASE_DIR.parents[1] / "CAVIA" / "src" / "SIMPY"
+CAVIA_BASE_PATH = BASE_PATH.parent / "CAVIA" / "src" / "SIMPY"
 
-OUTPUT_DIR = BASE_DIR / "processed_data"
+OUTPUT_DIR = BASE_PATH / "analysis" / "processed_data"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_FILE = OUTPUT_DIR / "service_cavia_mean.pkl"
 
