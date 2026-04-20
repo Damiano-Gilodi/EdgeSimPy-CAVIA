@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np  # type: ignore
 from scipy.stats import truncnorm  # type: ignore
 
 
@@ -7,7 +7,7 @@ def dist_deterministic(mean, rng):
 
 
 def dist_exponential(mean, rng):
-    return rng.exponential(scale=mean)
+    return max(1, rng.exponential(scale=mean))
 
 
 def dist_uniform(mean, rng):

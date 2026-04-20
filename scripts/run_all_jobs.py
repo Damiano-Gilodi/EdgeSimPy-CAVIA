@@ -1,3 +1,4 @@
+import hashlib
 import os
 import subprocess
 import sys
@@ -11,7 +12,14 @@ from simulation.cavia_simulation.utils.progress_tracker import is_app_marked_com
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-PROGRESS_FILE = BASE_DIR / "simulation" / "cavia_simulation" / "simulation_progress.json"
+PROGRESS_FILE = BASE_DIR / "simulation" / "cavia_simulation" / "state" / "simulation_progress.json"
+
+
+def generate_seed(first: str, second: str):
+
+    combined = first + second
+    hashed = hashlib.md5(combined.encode())
+    return int(hashed.hexdigest(), 16)
 
 
 def run_script(script_path, distribution, scenario, app, num_runs=10, seed=42):
@@ -40,7 +48,7 @@ def main():
     start = time.perf_counter()
 
     valid_scenarios = find_or_load_scenarios(PKL_PATH, force_rescan=True)
-    distributions = ["exponential", "uniform", "gamma_k2", "normal", "normal_wide", "normal_wide_trunc"]
+    distributions = ["deterministic", "exponential", "uniform", "gamma_k2", "normal", "normal_wide", "normal_wide_trunc"]
 
     for d in distributions:
         if d not in STRATEGY_REGISTRY:
@@ -62,7 +70,9 @@ def main():
                     print(f"Skip: {dist_type} | {scenario_name} | {app_name}")
                     continue
 
-                run_script(sim_script, dist_type, scenario_name, app_name, num_runs=100, seed=42)
+                seed_gen = generate_seed(scenario_name, app_name)
+
+                run_script(sim_script, dist_type, scenario_name, app_name, num_runs=100, seed=seed_gen)
 
     end = time.perf_counter()
     print(f"\nALL JOBS COMPLETED : {end - start:.2f} s ({(end - start)/60:.2f} min)")

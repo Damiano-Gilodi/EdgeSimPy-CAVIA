@@ -40,6 +40,7 @@ class Simulator(ComponentManager, Model):
         scheduler: Callable = DefaultScheduler,
         dump_interval: int = 100,
         logs_directory: str = "logs",
+        disable_agent_log_saving: list = [],
     ) -> object:
         """Creates a Simulator object.
 
@@ -107,6 +108,7 @@ class Simulator(ComponentManager, Model):
         self.last_dump = 0
         self.dump_interval = dump_interval
         self.logs_directory = logs_directory
+        self.disable_agent_log_saving = disable_agent_log_saving
 
         # Attribute that stores the network topology used during the simulation
         self.topology = None
@@ -289,6 +291,10 @@ class Simulator(ComponentManager, Model):
 
         # Collecting agent-level metrics
         for agent in self.schedule._agents.values():
+
+            if agent.__class__.__name__ in self.disable_agent_log_saving:
+                continue
+
             metrics = agent.collect()
 
             if metrics != {}:

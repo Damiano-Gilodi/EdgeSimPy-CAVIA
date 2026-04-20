@@ -83,9 +83,10 @@ def main():
             resource_management_algorithm=my_algorithm,
             user_defined_functions=[static_dummy_mobility],
             logs_directory=str(current_logs_dir),
+            disable_agent_log_saving=["EdgeServer", "NetworkSwitch"],
         )
 
-        simulator.initialize(input_file=f"datasets/{scenario_name}.json")
+        simulator.initialize(input_file=str(BASE_DIR / "datasets" / f"{scenario_name}.json"))
         simulator.run_model()
 
         del simulator
