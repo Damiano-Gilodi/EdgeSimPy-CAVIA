@@ -1,0 +1,12 @@
+Mesa==1.2.1
+networkx==3.4.2
+msgpack==1.1.2
+
+numpy>=1.24,<2.0
+pandas>=2.0,<3.0
+matplotlib>=3.7
+seaborn>=0.13
+scipy>=1.10
+
+requests
+tqdm
